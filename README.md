@@ -1,2 +1,2 @@
 # seva_sahyog_services
-API for Seva Sahyog hybrid app Saha Siksha
+API for Seva Sahyog hybrid app Sahasiksha
