@@ -4,9 +4,6 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.transaction.PlatformTransactionManager;
 
 import java.util.Properties;
 
@@ -31,17 +28,17 @@ public class DatabaseConfiguration {
         return mysqlDataSource;
     }
 
-    @Bean
+ /*   @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(mysqlDataSource());
         sessionFactory.setPackagesToScan("seva.sahyog.sahashiksha");
-        sessionFactory.setHibernateProperties(hibernateProperties());
+        //sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     public PlatformTransactionManager hibernateTransactionManager() {
         HibernateTransactionManager transactionManager
                 = new HibernateTransactionManager();
@@ -56,5 +53,5 @@ public class DatabaseConfiguration {
         hibernateProperties.put("hibernate.show_sql", true);
         hibernateProperties.put("hibernate.hbm2ddl.auto", "update");
         return hibernateProperties;
-    }
+    }*/
 }
