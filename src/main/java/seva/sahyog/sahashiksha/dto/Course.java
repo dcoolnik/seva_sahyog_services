@@ -1,28 +1,53 @@
 package seva.sahyog.sahashiksha.dto;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@Entity
+@Table(name = "course")
 public class Course {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "course_id")
     private int courseId;
 
+    @Column(name = "name", nullable = false, length = 150)
     private String name;
 
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Course_Teacher",
+            joinColumns = { @JoinColumn(name = "course_id") },
+            inverseJoinColumns = { @JoinColumn(name = "teacher_id") }
+    )
     private Set<Teacher> courseTeachers;
 
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Course_Student",
+            joinColumns = { @JoinColumn(name = "course_id") },
+            inverseJoinColumns = { @JoinColumn(name = "student_id") }
+    )
     private Set<Student> courseStudents;
 
+    @OneToMany(mappedBy="course")
     private Set<CourseContent> courseContents;
 
+    @OneToMany(mappedBy="course")
     private Set<Chapter> chapters;
 
+    @OneToMany(mappedBy="course")
     private Set<Assignment> assignments;
 
+    @Column(name = "course_class")
     private String courseClass;
 
+    @Column(name = "created_by")
     private String createdBy;
 
+    @Column(name = "created_datetime")
     private LocalDateTime createdDatetime;
 
     public Course(){}

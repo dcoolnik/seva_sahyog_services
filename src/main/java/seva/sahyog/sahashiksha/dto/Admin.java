@@ -1,21 +1,33 @@
 package seva.sahyog.sahashiksha.dto;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "admin")
 public class Admin {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "admin_id")
     private int adminId;
 
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
+    @Column(name = "email", nullable = true, length = 100)
     private String email;
 
+    @Column(name = "mobile_number", nullable = true, length = 15)
     private String mobileNumber;
 
+    @Column(name = "active")
     private boolean isActive;
 
+    @Column(name = "created_by")
     private String createdBy;
 
+    @Column(name = "created_datetime")
     private LocalDateTime createdDatetime;
 
     public Admin(){}

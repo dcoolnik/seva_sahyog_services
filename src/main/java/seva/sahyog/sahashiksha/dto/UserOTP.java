@@ -1,15 +1,24 @@
 package seva.sahyog.sahashiksha.dto;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "user_otp")
 public class UserOTP {
 
+    @Column(name = "user_id")
     private int userId;
 
+    @Column(name = "otp")
     private String OTP;
 
+    @Column(name = "generated_datetime")
     private LocalDateTime otpGeneratedDatetime;
 
+    @Column(name = "validity_datetime")
     private LocalDateTime otpValidityDatetime;
 
     public UserOTP(){}

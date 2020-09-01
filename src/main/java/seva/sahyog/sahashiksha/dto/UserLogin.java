@@ -1,17 +1,27 @@
 package seva.sahyog.sahashiksha.dto;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "user_login")
 public class UserLogin {
 
+    @Column(name="user_id", unique = true)
     private int userId;
 
+    @Column(name = "old_password")
     private String oldPassword;
 
+    @Column(name = "current_password")
     private String currentPassword;
 
+    @Column(name = "created_by")
     private String createdBy;
 
+    @Column(name = "created_datetime")
     private LocalDateTime createdDatetime;
 
     public UserLogin(){}
