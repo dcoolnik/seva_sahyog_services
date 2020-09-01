@@ -1,31 +1,49 @@
 package seva.sahyog.sahashiksha.dto;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@Entity
+@Table(name = "student")
 public class Student {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "student_id")
     private int studentId;
 
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
+    @Column(name = "email", length = 100, nullable = true)
     private String email;
 
+    @Column(name = "mobile_number", length = 15, nullable = true)
     private String mobileNumber;
 
+    @Column(name = "active")
     private boolean isActive;
 
+    @ManyToOne
+    @JoinColumn(name="school_id", nullable=false)
     private School school;
 
+    @ManyToMany(mappedBy = "Students")
     private Set<Course> courses;
 
+    @OneToMany(mappedBy="student")
+    private Set<StudentAssignment> studentAssignments;
+
+    @Column(name = "created_by")
     private String createdBy;
 
+    @Column(name = "created_datetime")
     private LocalDateTime createdDatetime;
 
     public Student(){}
 
-    public Student(int studentId, String name, String email, String mobileNumber, boolean isActive, School school, Set<Course> courses, String createdBy, LocalDateTime createdDatetime) {
+    public Student(int studentId, String name, String email, String mobileNumber, boolean isActive, School school, Set<Course> courses, Set<StudentAssignment> studentAssignments, String createdBy, LocalDateTime createdDatetime) {
         this.studentId = studentId;
         this.name = name;
         this.email = email;
@@ -33,6 +51,7 @@ public class Student {
         this.isActive = isActive;
         this.school = school;
         this.courses = courses;
+        this.studentAssignments = studentAssignments;
         this.createdBy = createdBy;
         this.createdDatetime = createdDatetime;
     }
@@ -93,6 +112,14 @@ public class Student {
         this.courses = courses;
     }
 
+    public Set<StudentAssignment> getStudentAssignments() {
+        return studentAssignments;
+    }
+
+    public void setStudentAssignments(Set<StudentAssignment> studentAssignments) {
+        this.studentAssignments = studentAssignments;
+    }
+
     public String getCreatedBy() {
         return createdBy;
     }
@@ -119,6 +146,7 @@ public class Student {
                 ", isActive=" + isActive +
                 ", school=" + school +
                 ", courses=" + courses +
+                ", studentAssignments=" + studentAssignments +
                 ", createdBy='" + createdBy + '\'' +
                 ", createdDatetime=" + createdDatetime +
                 '}';

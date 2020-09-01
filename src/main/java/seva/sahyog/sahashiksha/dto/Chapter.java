@@ -1,24 +1,38 @@
 package seva.sahyog.sahashiksha.dto;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@Entity
+@Table(name = "chapter")
 public class Chapter {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "chapter_id")
     private int chapterId;
 
+    @Column(name = "name")
     private String name;
 
+    @OneToMany(mappedBy="chapter")
     private Set<ChapterContent> chapterContents;
 
+    @ManyToOne
+    @JoinColumn(name="course_id", nullable=false)
     private Course course;
 
+    @Column(name = "created_by")
     private String createdBy;
 
+    @Column(name = "created_datetime")
     private LocalDateTime createdDatetime;
 
+    @Column(name = "updated_by")
     private String updatedBy;
 
+    @Column(name = "updated_datetime")
     private LocalDateTime updatedDatetime;
 
     public Chapter(){}

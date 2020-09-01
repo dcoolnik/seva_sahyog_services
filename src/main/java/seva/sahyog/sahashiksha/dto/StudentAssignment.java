@@ -1,46 +1,57 @@
 package seva.sahyog.sahashiksha.dto;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "student_assignment")
 public class StudentAssignment {
 
-    private int assignmentId;
+    @ManyToOne
+    @JoinColumn(name="assignment_id", nullable=false)
+    private Assignment assignment;
 
-    private int studentId;
+    @ManyToOne
+    @JoinColumn(name="student_id", nullable=false)
+    private Student student;
 
+    @Column(name = "assignment_result_content", nullable = false)
     private String assignmentResultContent;
 
+    @Column(name = "marks")
     private int marks;
 
+    @Column(name = "created_by")
     private String createdBy;
 
+    @Column(name = "created_datetime")
     private LocalDateTime createdDatetime;
 
     public StudentAssignment(){}
 
-    public StudentAssignment(int assignmentId, int studentId, String assignmentResultContent, int marks, String createdBy, LocalDateTime createdDatetime) {
-        this.assignmentId = assignmentId;
-        this.studentId = studentId;
+    public StudentAssignment(Assignment assignment, Student student, String assignmentResultContent, int marks, String createdBy, LocalDateTime createdDatetime) {
+        this.assignment = assignment;
+        this.student = student;
         this.assignmentResultContent = assignmentResultContent;
         this.marks = marks;
         this.createdBy = createdBy;
         this.createdDatetime = createdDatetime;
     }
 
-    public int getAssignmentId() {
-        return assignmentId;
+    public Assignment getAssignment() {
+        return assignment;
     }
 
-    public void setAssignmentId(int assignmentId) {
-        this.assignmentId = assignmentId;
+    public void setAssignment(Assignment assignment) {
+        this.assignment = assignment;
     }
 
-    public int getStudentId() {
-        return studentId;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public String getAssignmentResultContent() {
@@ -78,8 +89,8 @@ public class StudentAssignment {
     @Override
     public String toString() {
         return "StudentAssignment{" +
-                "assignmentId=" + assignmentId +
-                ", studentId=" + studentId +
+                "assignment=" + assignment +
+                ", student=" + student +
                 ", assignmentResultContent='" + assignmentResultContent + '\'' +
                 ", marks=" + marks +
                 ", createdBy='" + createdBy + '\'' +

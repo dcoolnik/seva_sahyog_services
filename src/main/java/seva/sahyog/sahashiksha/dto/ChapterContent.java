@@ -1,19 +1,31 @@
 package seva.sahyog.sahashiksha.dto;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "chapter_content")
 public class ChapterContent {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "chapter_content_id")
     private int id;
 
+    @Column(name = "content_type", nullable = false)
     private String contentType;
 
+    @Column(name = "content")
     private String content;
 
+    @ManyToOne
+    @JoinColumn(name="chapter_id", nullable=false)
     private Chapter chapter;
 
+    @Column(name = "updated_by")
     private String updatedBy;
 
+    @Column(name = "updated_datetime")
     private LocalDateTime updatedDatetime;
 
     public ChapterContent(){}
