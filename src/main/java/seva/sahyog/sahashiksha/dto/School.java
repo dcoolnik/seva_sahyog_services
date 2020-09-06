@@ -9,7 +9,6 @@ import java.util.Set;
 public class School {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "school_id")
     private int schoolId;
 
