@@ -13,7 +13,7 @@ public class LoginDAOImpl extends DAOTemplate implements LoginDAO {
     public UserLogin getUserLoginByUsername(String username) {
         Query<UserLogin> query = getCurrentSession().createQuery("from UserLogin u where" +
                 " u.userName=:username", UserLogin.class);
-        query.setParameter("scn", username);
+        query.setParameter("username", username);
 
         return query.uniqueResult();
     }
