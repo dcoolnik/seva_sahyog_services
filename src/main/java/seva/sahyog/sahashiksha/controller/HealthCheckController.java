@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 
 @Controller
 @Produces(MediaType.APPLICATION_JSON)
-@Path("/healthcheckservice")
+@Path("/sahashiksha/healthcheckservice")
 public class HealthCheckController {
 
     @Autowired

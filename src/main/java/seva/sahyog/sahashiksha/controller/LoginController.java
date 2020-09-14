@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 @Controller
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Path("/logincontroller/")
+@Path("/sahashiksha/logincontroller")
 public class LoginController {
 
     @Autowired
