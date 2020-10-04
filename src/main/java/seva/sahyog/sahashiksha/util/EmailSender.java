@@ -13,7 +13,7 @@ import java.util.Properties;
 public class EmailSender {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmailSender.class);
-    private static final String SAHA_SHIKSHA_EMAIL = "sahashiksha_sevasahyog@gmail.com";
+    private static final String SAHA_SHIKSHA_EMAIL = "sahashiksha_sevasahyog@gmail.com"; //to be updated
 
     public static void sendEmail(String recipient, String subject, String body) {
         Session session = Session.getDefaultInstance(getEmailProperties());
