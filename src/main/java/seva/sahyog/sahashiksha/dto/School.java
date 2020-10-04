@@ -10,7 +10,7 @@ public class School {
 
     @Id
     @Column(name = "school_id")
-    private int schoolId;
+    private long schoolId;
 
     @Column(name = "school_code")
     private String schoolCode;
@@ -24,6 +24,9 @@ public class School {
     @OneToMany(mappedBy="school")
     private Set<Teacher> teachers;
 
+    @Column(name = "active")
+    private boolean isActive;
+
     @Column(name = "created_by")
     private String createdBy;
 
@@ -32,21 +35,22 @@ public class School {
 
     public School(){}
 
-    public School(int schoolId, String schoolCode, String schoolName, Set<Student> students, Set<Teacher> teachers, String createdBy, LocalDateTime createdDatetime) {
+    public School(long schoolId, String schoolCode, String schoolName, Set<Student> students, Set<Teacher> teachers, boolean isActive, String createdBy, LocalDateTime createdDatetime) {
         this.schoolId = schoolId;
         this.schoolCode = schoolCode;
         this.schoolName = schoolName;
         this.students = students;
         this.teachers = teachers;
+        this.isActive = isActive;
         this.createdBy = createdBy;
         this.createdDatetime = createdDatetime;
     }
 
-    public int getSchoolId() {
+    public long getSchoolId() {
         return schoolId;
     }
 
-    public void setSchoolId(int schoolId) {
+    public void setSchoolId(long schoolId) {
         this.schoolId = schoolId;
     }
 
@@ -80,6 +84,14 @@ public class School {
 
     public void setTeachers(Set<Teacher> teachers) {
         this.teachers = teachers;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public String getCreatedBy() {

@@ -10,7 +10,7 @@ public class Teacher {
 
     @Id
     @Column(name = "teacher_id")
-    private int teacherId;
+    private long teacherId;
 
     @Column(name = "name", length = 50, nullable = false)
     private String name;
@@ -39,7 +39,7 @@ public class Teacher {
 
     public Teacher(){}
 
-    public Teacher(int teacherId, String name, String email, String mobileNumber, boolean isActive, School school, Set<Course> courses, String createdBy, LocalDateTime createdDatetime) {
+    public Teacher(long teacherId, String name, String email, String mobileNumber, boolean isActive, School school, Set<Course> courses, String createdBy, LocalDateTime createdDatetime) {
         this.teacherId = teacherId;
         this.name = name;
         this.email = email;
@@ -51,11 +51,11 @@ public class Teacher {
         this.createdDatetime = createdDatetime;
     }
 
-    public int getTeacherId() {
+    public long getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(int teacherId) {
+    public void setTeacherId(long teacherId) {
         this.teacherId = teacherId;
     }
 

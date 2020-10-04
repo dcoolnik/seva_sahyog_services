@@ -7,13 +7,13 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user_otp")
-public class UserOTP {
+public class UserOtp {
 
     @Column(name = "user_id")
-    private int userId;
+    private long userId;
 
     @Column(name = "otp")
-    private String OTP;
+    private String otp;
 
     @Column(name = "generated_datetime")
     private LocalDateTime otpGeneratedDatetime;
@@ -21,29 +21,29 @@ public class UserOTP {
     @Column(name = "validity_datetime")
     private LocalDateTime otpValidityDatetime;
 
-    public UserOTP(){}
+    public UserOtp(){}
 
-    public UserOTP(int userId, String OTP, LocalDateTime otpGeneratedDatetime, LocalDateTime otpValidityDatetime) {
+    public UserOtp(long userId, String otp, LocalDateTime otpGeneratedDatetime, LocalDateTime otpValidityDatetime) {
         this.userId = userId;
-        this.OTP = OTP;
+        this.otp = otp;
         this.otpGeneratedDatetime = otpGeneratedDatetime;
         this.otpValidityDatetime = otpValidityDatetime;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
-    public String getOTP() {
-        return OTP;
+    public String getOtp() {
+        return otp;
     }
 
-    public void setOTP(String OTP) {
-        this.OTP = OTP;
+    public void setOtp(String otp) {
+        this.otp = otp;
     }
 
     public LocalDateTime getOtpGeneratedDatetime() {
@@ -66,7 +66,7 @@ public class UserOTP {
     public String toString() {
         return "UserOTP{" +
                 "userId=" + userId +
-                ", OTP='" + OTP + '\'' +
+                ", OTP='" + otp + '\'' +
                 ", otpGeneratedDatetime=" + otpGeneratedDatetime +
                 ", otpValidityDatetime=" + otpValidityDatetime +
                 '}';

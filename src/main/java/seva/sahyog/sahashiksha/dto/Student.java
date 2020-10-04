@@ -11,7 +11,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "student_id")
-    private int studentId;
+    private long studentId;
 
     @Column(name = "name", length = 50, nullable = false)
     private String name;
@@ -43,7 +43,7 @@ public class Student {
 
     public Student(){}
 
-    public Student(int studentId, String name, String email, String mobileNumber, boolean isActive, School school, Set<Course> courses, Set<StudentAssignment> studentAssignments, String createdBy, LocalDateTime createdDatetime) {
+    public Student(long studentId, String name, String email, String mobileNumber, boolean isActive, School school, Set<Course> courses, Set<StudentAssignment> studentAssignments, String createdBy, LocalDateTime createdDatetime) {
         this.studentId = studentId;
         this.name = name;
         this.email = email;
@@ -56,11 +56,11 @@ public class Student {
         this.createdDatetime = createdDatetime;
     }
 
-    public int getStudentId() {
+    public long getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(long studentId) {
         this.studentId = studentId;
     }
 

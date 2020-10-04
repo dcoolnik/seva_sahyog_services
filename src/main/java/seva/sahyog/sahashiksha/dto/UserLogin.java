@@ -1,5 +1,7 @@
 package seva.sahyog.sahashiksha.dto;
 
+import seva.sahyog.sahashiksha.model.UserType;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -8,9 +10,10 @@ import java.time.LocalDateTime;
 public class UserLogin {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GEN")
+    @SequenceGenerator(name = "SEQ_GEN", sequenceName = "user_login_seq")
     @Column(name="user_id")
-    private int userId;
+    private long userId;
 
     @Column(name="username", unique = true)
     private String userName;
@@ -24,14 +27,17 @@ public class UserLogin {
     @Column(name = "isActive")
     private boolean isActive;
 
-    @Column(name = "isStudent")
+    @Column(name = "userType")
+    private UserType userType;
+
+    /*@Column(name = "isStudent")
     private boolean isStudent;
 
     @Column(name = "isTeacher")
     private boolean isTeacher;
 
     @Column(name = "isAdmin")
-    private boolean isAdmin;
+    private boolean isAdmin;*/
 
     @Column(name = "created_by")
     private String createdBy;
@@ -41,26 +47,35 @@ public class UserLogin {
 
     public UserLogin(){}
 
-    public UserLogin(int userId, String userName, String oldPassword, String currentPassword, boolean isActive, boolean isStudent, boolean isTeacher, boolean isAdmin, String createdBy, LocalDateTime createdDatetime) {
-        this.userId = userId;
+    public UserLogin(String userName,
+                     //String oldPassword,
+                     String currentPassword,
+                     boolean isActive,
+                     UserType userType,
+                     /*boolean isStudent,
+                     boolean isTeacher,
+                     boolean isAdmin,*/
+                     String createdBy,
+                     LocalDateTime createdDatetime) {
         this.userName = userName;
-        this.oldPassword = oldPassword;
+        this.oldPassword = currentPassword; //when creating, old & new password should be the same
         this.currentPassword = currentPassword;
         this.isActive = isActive;
-        this.isStudent = isStudent;
-        this.isTeacher = isTeacher;
-        this.isAdmin = isAdmin;
+        //this.isStudent = isStudent;
+        //this.isTeacher = isTeacher;
+        //this.isAdmin = isAdmin;
+        this.userType = userType;
         this.createdBy = createdBy;
         this.createdDatetime = createdDatetime;
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    /*public void setUserId(long userId) {
         this.userId = userId;
-    }
+    }*/
 
     public String getUserName() {
         return userName;
@@ -94,7 +109,7 @@ public class UserLogin {
         isActive = active;
     }
 
-    public boolean isStudent() {
+    /*public boolean isStudent() {
         return isStudent;
     }
 
@@ -116,6 +131,14 @@ public class UserLogin {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }*/
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
     public String getCreatedBy() {
@@ -142,9 +165,10 @@ public class UserLogin {
                 ", oldPassword='" + oldPassword + '\'' +
                 ", currentPassword='" + currentPassword + '\'' +
                 ", isActive=" + isActive +
-                ", isStudent=" + isStudent +
+                ", userType=" + userType.name() +
+                /*", isStudent=" + isStudent +
                 ", isTeacher=" + isTeacher +
-                ", isAdmin=" + isAdmin +
+                ", isAdmin=" + isAdmin +*/
                 ", createdBy='" + createdBy + '\'' +
                 ", createdDatetime=" + createdDatetime +
                 '}';

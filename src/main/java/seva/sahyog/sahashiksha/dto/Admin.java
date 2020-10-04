@@ -1,6 +1,9 @@
 package seva.sahyog.sahashiksha.dto;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
@@ -9,7 +12,7 @@ public class Admin {
 
     @Id
     @Column(name = "admin_id")
-    private int adminId;
+    private long adminId;
 
     @Column(name = "name", length = 50, nullable = false)
     private String name;
@@ -31,7 +34,7 @@ public class Admin {
 
     public Admin(){}
 
-    public Admin(int adminId, String name, String email, String mobileNumber, boolean isActive, String createdBy, LocalDateTime createdDatetime) {
+    public Admin(long adminId, String name, String email, String mobileNumber, boolean isActive, String createdBy, LocalDateTime createdDatetime) {
         this.adminId = adminId;
         this.name = name;
         this.email = email;
@@ -41,11 +44,11 @@ public class Admin {
         this.createdDatetime = createdDatetime;
     }
 
-    public int getAdminId() {
+    public long getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(int adminId) {
+    public void setAdminId(long adminId) {
         this.adminId = adminId;
     }
 
