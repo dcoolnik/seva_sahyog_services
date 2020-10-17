@@ -1,12 +1,49 @@
+buildscript {
+	repositories {
+		mavenCentral();
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.1.RELEASE")
+
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.3.1.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id 'eclipse'
+	id 'war'
 }
 
+archivesBaseName = "sahashiksha"
 group = 'seva.sahyog'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+javadoc.options.encoding = 'UTF-8'
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src/main/java'
+		}
+		resources {
+			srcDir 'src/main/resources'
+		}
+	}
+
+	test {
+		java {
+			srcDir 'src/test/java'
+		}
+		resources {
+			srcDir 'src/main/resources'
+		}
+	}
+}
 
 repositories {
 	mavenCentral()
@@ -16,12 +53,20 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'mysql:mysql-connector-java:5.1.6'
-	implementation 'javax.ws.rs:javax.ws.rs-api:2.0'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 }
 
-test {
-	useJUnitPlatform()
+war.enabled = true
+
+war {
+	archiveName 'sahashiksha.war'
+	manifest {
+		attributes 'Main-Class': 'seva.sahyog.sahashiksha.application.SahashikshaApplication'
+	}
+}
+
+artifacts {
+	archives war
 }

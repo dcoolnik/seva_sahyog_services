@@ -18,8 +18,8 @@ public class LoginDAOImpl extends DAOTemplate implements LoginDAO {
         return query.uniqueResult();*/
 
         UserLogin user = new UserLogin();
-        user.setUserName("username");
-        user.setCurrentPassword("password");
+        user.setUserName("prince");
+        user.setCurrentPassword("prince");
 
         return user;
     }
