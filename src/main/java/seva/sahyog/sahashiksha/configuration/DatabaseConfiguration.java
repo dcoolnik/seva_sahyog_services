@@ -1,6 +1,5 @@
 package seva.sahyog.sahashiksha.configuration;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,14 +21,14 @@ public class DatabaseConfiguration {
     @Value("${spring.datasource.password}")
     private String datasourcePassword;
 
-    @Bean
+    /*@Bean
     public MysqlDataSource mysqlDataSource(){
         MysqlDataSource mysqlDataSource = new MysqlDataSource();
         mysqlDataSource.setURL(datasourceURL);
         mysqlDataSource.setUser(datasourceUserName);
         mysqlDataSource.setPassword(datasourcePassword);
         return mysqlDataSource;
-    }
+    }*/
 
    /*@Bean
     public LocalSessionFactoryBean sessionFactory() {
