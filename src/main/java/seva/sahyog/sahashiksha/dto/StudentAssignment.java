@@ -7,6 +7,11 @@ import java.time.LocalDateTime;
 @Table(name = "student_assignment")
 public class StudentAssignment {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "student_assignment_id")
+    private int studentAssignmentId;
+
     @ManyToOne
     @JoinColumn(name="assignment_id", nullable=false)
     private Assignment assignment;
@@ -36,6 +41,14 @@ public class StudentAssignment {
         this.marks = marks;
         this.createdBy = createdBy;
         this.createdDatetime = createdDatetime;
+    }
+
+    public int getStudentAssignmentId() {
+        return studentAssignmentId;
+    }
+
+    public void setStudentAssignmentId(int studentAssignmentId) {
+        this.studentAssignmentId = studentAssignmentId;
     }
 
     public Assignment getAssignment() {

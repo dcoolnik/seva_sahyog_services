@@ -29,7 +29,7 @@ public class Student {
     @JoinColumn(name="school_id", nullable=false)
     private School school;
 
-    @ManyToMany(mappedBy = "Students")
+    @ManyToMany(mappedBy = "courseStudents")
     private Set<Course> courses;
 
     @OneToMany(mappedBy="student")

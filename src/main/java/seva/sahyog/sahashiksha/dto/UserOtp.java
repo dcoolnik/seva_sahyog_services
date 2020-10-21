@@ -1,13 +1,16 @@
 package seva.sahyog.sahashiksha.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user_otp")
 public class UserOtp {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_otp_id")
+    private int userOtpId;
 
     @Column(name = "user_id")
     private int userId;
@@ -28,6 +31,14 @@ public class UserOtp {
         this.otp = otp;
         this.otpGeneratedDatetime = otpGeneratedDatetime;
         this.otpValidityDatetime = otpValidityDatetime;
+    }
+
+    public int getUserOtpId() {
+        return userOtpId;
+    }
+
+    public void setUserOtpId(int userOtpId) {
+        this.userOtpId = userOtpId;
     }
 
     public int getUserId() {
