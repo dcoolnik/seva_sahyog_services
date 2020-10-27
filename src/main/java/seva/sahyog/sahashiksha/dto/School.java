@@ -9,6 +9,7 @@ import java.util.Set;
 public class School {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "school_id")
     private int schoolId;
 
@@ -31,11 +32,11 @@ public class School {
     private String createdBy;
 
     @Column(name = "created_datetime")
-    private LocalDateTime createdDatetime;
+    private String createdDatetime;
 
     public School(){}
 
-    public School(int schoolId, String schoolCode, String schoolName, Set<Student> students, Set<Teacher> teachers, boolean isActive, String createdBy, LocalDateTime createdDatetime) {
+    public School(int schoolId, String schoolCode, String schoolName, Set<Student> students, Set<Teacher> teachers, boolean isActive, String createdBy, String createdDatetime) {
         this.schoolId = schoolId;
         this.schoolCode = schoolCode;
         this.schoolName = schoolName;
@@ -102,11 +103,11 @@ public class School {
         this.createdBy = createdBy;
     }
 
-    public LocalDateTime getCreatedDatetime() {
+    public String getCreatedDatetime() {
         return createdDatetime;
     }
 
-    public void setCreatedDatetime(LocalDateTime createdDatetime) {
+    public void setCreatedDatetime(String createdDatetime) {
         this.createdDatetime = createdDatetime;
     }
 
