@@ -57,6 +57,8 @@ dependencies {
 	implementation 'javax.validation:validation-api:2.0.0.Final'
 	implementation 'javax.mail:javax.mail-api:1.6.0'
 	implementation 'org.hibernate:hibernate-validator:6.1.0.Final'
+	implementation 'io.springfox:springfox-swagger2:2.7.0'
+	implementation 'io.springfox:springfox-swagger-ui:2.7.0'
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
